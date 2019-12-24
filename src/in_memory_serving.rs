@@ -139,9 +139,9 @@ impl_web! {
     }
 }
 
-struct LocalArc<T>(Arc<T>);
+pub struct LocalArc<T>(Arc<T>);
 
-struct InMemory {
+pub struct InMemory {
     data: Bytes,
     mime: String,
     status: u16,
@@ -154,7 +154,7 @@ impl fmt::Debug for InMemory {
 }
 
 impl InMemory {
-    fn new<B: Into<Bytes>, S: Into<String>>(data: B, mime: S) -> InMemory {
+    pub fn new<B: Into<Bytes>, S: Into<String>>(data: B, mime: S) -> InMemory {
         InMemory {
             data: data.into(),
             mime: mime.into(),

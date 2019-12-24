@@ -1,5 +1,10 @@
+#[macro_use]
+extern crate futures;
+
 mod file_serving;
 mod in_memory_serving;
+mod markdown;
+mod transform;
 
 use self::{file_serving::FileServing, in_memory_serving::InMemoryServing};
 use clap::{clap_app, crate_version};
@@ -131,6 +136,7 @@ where
 {
     let fut = ServiceBuilder::new()
         .resource(FileServing::new(root, index, default))
+        .middleware(transform::MarkdownMiddleware::new(root))
         .serve(incoming);
     tokio::run(fut);
 }

@@ -11,11 +11,13 @@ bytes = "0.4"
 clap = "2.32"
 futures = "0.1"
 lazy_static = "1.2"
-mime_guess = "2.0.0-alpha.6"
+mime_guess = "2.0.1"
 tokio = "0.1"
 tokio-rustls = "0.8"
-tower-web = { version = "0.3.4", features = ["rustls"]}
+tower-web = { version = "0.3.7", features = ["rustls"]}
+tower-service = "0.1.0"
 http = "0.1"
+pulldown-cmark = {git = "https://github.com/pierremarc/pulldown-cmark"}
 
 [profile.release]
 lto = true
